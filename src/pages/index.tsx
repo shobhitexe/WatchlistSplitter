@@ -1,3 +1,13 @@
+import { DisplayStocks, FileInput } from "@/components";
+import { useState } from "react";
+
 export default function Home() {
-  return <main></main>;
+  const [filteredArray, setFilteredArray] = useState<string[][]>([]);
+
+  return (
+    <main>
+      <FileInput setFilteredArray={setFilteredArray} />
+      <DisplayStocks stocksArray={filteredArray} />
+    </main>
+  );
 }

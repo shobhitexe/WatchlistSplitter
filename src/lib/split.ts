@@ -1,16 +1,25 @@
 import readXlsxFile from "read-excel-file";
 
-export function splitStocks(excelFile: File) {
+export async function splitStocks(excelFile: File) {
   const stocksArray: string[] = [];
 
-  readXlsxFile(excelFile).then((row) => {
-    row.map((stock) => {
-      if (stock[2] === null || stock[2] === undefined || stock[2] === "Symbol")
-        return;
+  const rows = await readXlsxFile(excelFile);
 
-      stocksArray.push(String(stock[2]));
-    });
+  rows.map((stock) => {
+    if (stock[2] === null || stock[2] === undefined || stock[2] === "Symbol")
+      return;
+
+    stocksArray.push(String(stock[2]));
   });
 
-  return stocksArray;
+  const outputArray = [];
+  const chunkSize = 30;
+  let currentIndex = 0;
+
+  while (currentIndex < stocksArray.length) {
+    outputArray.push(stocksArray.slice(currentIndex, currentIndex + chunkSize));
+    currentIndex += chunkSize;
+  }
+
+  return outputArray;
 }
