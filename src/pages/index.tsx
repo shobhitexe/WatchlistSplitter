@@ -1,13 +1,12 @@
-import { DisplayStocks, FileInput } from "@/components";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
-  const [filteredArray, setFilteredArray] = useState<string[][]>([]);
+  const router = useRouter();
 
-  return (
-    <main>
-      <FileInput setFilteredArray={setFilteredArray} />
-      <DisplayStocks stocksArray={filteredArray} />
-    </main>
-  );
+  useEffect(() => {
+    router.push("/WatchlistSplitter");
+  }, [router]);
+
+  return <main></main>;
 }

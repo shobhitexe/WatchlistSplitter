@@ -26,6 +26,8 @@ export default function DisplayStocks({
     }
   }
 
+  console.log(stocksArray);
+
   return (
     <div
       className={` flex flex-col gap-5 text-whiteText font-poppins mt-10 flex-wrap w-[80%] mx-auto ${
