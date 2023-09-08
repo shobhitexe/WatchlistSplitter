@@ -62,6 +62,12 @@ export default function FileInput({
         )}
       </form>
 
+      {!isListVisible && (
+        <h1 className="font-poppins text-red-500">
+          *Use excel exported from chartink.com
+        </h1>
+      )}
+
       {isListVisible && (
         <button
           className="bg-gradient-to-bl from-emerald-500 to-green-600 hover:bg-gradient-to-bl hover:from-emerald-500 hover:to-green-500 mx-auto w-fit duration-200 justify-center border-whiteText border-opacity-50 px-5  py-2 font-poppins rounded-xl"
