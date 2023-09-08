@@ -21,7 +21,7 @@ export default function WatchlistSplitter() {
           width={1280}
           height={720}
           alt="warning"
-          className="w-full"
+          className="w-full mt-5"
         />
       )}
     </main>
