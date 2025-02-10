@@ -1,12 +1,29 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { DisplayStocks, FileInput } from "@/components";
+import Image from "next/image";
+import { useState } from "react";
 
-export default function Home() {
-  const router = useRouter();
+export default function WatchlistSplitter() {
+  const [filteredArray, setFilteredArray] = useState<string[][]>([]);
+  const [isListVisible, setIslistVisible] = useState<boolean>(false);
 
-  useEffect(() => {
-    router.push("/WatchlistSplitter");
-  }, [router]);
-
-  return <main></main>;
+  return (
+    <main>
+      <FileInput
+        setFilteredArray={setFilteredArray}
+        setIslistVisible={setIslistVisible}
+        isListVisible={isListVisible}
+      />
+      {isListVisible ? (
+        <DisplayStocks stocksArray={filteredArray} />
+      ) : (
+        <Image
+          src={"/images/warning.png"}
+          width={1280}
+          height={720}
+          alt="warning"
+          className="w-full mt-5"
+        />
+      )}
+    </main>
+  );
 }
